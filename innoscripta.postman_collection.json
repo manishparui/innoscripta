@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "1b455c1a-4f0e-4b34-84e2-316203240c52",
+		"name": "innoscripta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18233129"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/api/auth/signUp/isEligible",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manishparui@hotmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/signUp/isEligible",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signUp",
+								"isEligible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/signUp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"innoscriptaAuthToken\", pm.response.json().data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manishparui@hotmail.com\",\n    \"password\": \"Manish@1234\",\n    \"name\": \"Manish Parui\",\n    \"preferences\": {\n        \"categories\": [],\n        \"sources\": []\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/signUp",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/signIn/isEligible",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manishparui@hotmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/signIn/isEligible",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signIn",
+								"isEligible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/signIn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"innoscriptaAuthToken\", pm.response.json().data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"manishparui@hotmail.com\",\n    \"password\": \"Manish@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/signIn",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/signOut",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.unset(\"innoscriptaAuthToken\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/signOut",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signOut"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/isSignedIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuid\": \"36b417b2-7741-45b6-a56e-df577f13f33e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/auth/isSignedIn",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"isSignedIn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"item": [
+				{
+					"name": "/api/test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ok\",\n    \"totalResults\": 38,\n    \"articles\": [\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"India Today\"\n            },\n            \"author\": \"Munish Chandra Pandey\",\n            \"title\": \"CBI summons Delhi CM Arvind Kejriwal for questioning in liquor policy case - India Today\",\n            \"description\": \"The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\",\n            \"url\": \"https://www.indiatoday.in/india/story/cbi-summons-delhi-cm-arvind-kejriwal-for-questioning-liquor-policy-case-sources-2360089-2023-04-14\",\n            \"urlToImage\": \"https://akm-img-a-in.tosshub.com/indiatoday/images/story/202304/kejridelhi-sixteen_nine.jpeg?VersionId=rWSVj7hAGfFWPiYkd1QiRjspVNXR5Kh1\",\n            \"publishedAt\": \"2023-04-14T12:00:00Z\",\n            \"content\": \"By Munish Chandra Pandey, Pankaj Jain: The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\\r\\nThe probe agency has sum… [+2499 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"YouTube\"\n            },\n            \"author\": null,\n            \"title\": \"ESA's JUICE Mission Live: ESA launches mission to explore Jupiter's ocean-bearing moons | WION Live - WION\",\n            \"description\": \"Europe's space agency launches Jupiter Icy moon Mission (Juice) from Europe’s Spaceport at Kourou in French Guiana. Invited media will watch the launch from ...\",\n            \"url\": \"https://www.youtube.com/watch?v=cbMrql5-ypI\",\n            \"urlToImage\": \"https://i.ytimg.com/vi/cbMrql5-ypI/maxresdefault_live.jpg\",\n            \"publishedAt\": \"2023-04-14T11:40:34Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"Kanishka Singharia\",\n            \"title\": \"Truck at Rahul Gandhi's house as disqualified MP set to vacate official bungalow - Hindustan Times\",\n            \"description\": \"The 12 Tughlak Lane bungalow was allotted to Gandhi in 2005 after he won his first Lok Sabha election from Amethi in Uttar Pradesh. | Latest News India\",\n            \"url\": \"https://www.hindustantimes.com/india-news/truck-at-rahul-gandhi-s-house-as-disqualified-mp-set-to-vacate-official-bungalow-101681469101238.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Screenshot_2023-04-14_165323_1681471508454_1681471513417_1681471513417.png\",\n            \"publishedAt\": \"2023-04-14T11:27:35Z\",\n            \"content\": \"Trucks arrived at the government-allotted bungalow of former Congress chief Rahul Gandhi in the national capital as the Lok Sabha secretariat had asked him to vacate his official residence by April 2… [+1840 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"espn-cric-info\",\n                \"name\": \"ESPN Cric Info\"\n            },\n            \"author\": \"Deivarayan Muthu\",\n            \"title\": \"Match Preview - RCB vs Capitals, Indian Premier League 2023, 20th Match - ESPNcricinfo\",\n            \"description\": \"The visitors in Bengaluru will be looking for their first win in IPL 2023\",\n            \"url\": \"https://www.espncricinfo.com/series/indian-premier-league-2023-1345038/royal-challengers-bangalore-vs-delhi-capitals-20th-match-1359494/match-preview\",\n            \"urlToImage\": \"https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/357900/357993.6.jpg\",\n            \"publishedAt\": \"2023-04-14T11:09:11Z\",\n            \"content\": \"Wanindu Hasaranga has linked up with the team, and is getting ready for action  •  Royal Challengers Bangalore\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Entertainment Desk\",\n            \"title\": \"Reddit digs out video of Alia Bhatt 'lying' about destination weddings and Neetu exposing her plans to marry in Africa - Hindustan Times\",\n            \"description\": \"Alia Bhatt said in an old interview that she doesn't like destination weddings. Earlier, Neetu Kapoor had revealed Alia and Ranbir wanted to marry in Africa. | Bollywood\",\n            \"url\": \"https://www.hindustantimes.com/entertainment/bollywood/reddit-digs-out-video-of-alia-bhatt-lying-about-destination-weddings-and-neetu-exposing-her-plans-to-marry-in-africa-101681466907283.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/destination_wedding_Alia_ranbir_1681467484796_1681467500876_1681467500876.jpg\",\n            \"publishedAt\": \"2023-04-14T11:01:45Z\",\n            \"content\": \"Alia Bhatt and Ranbir Kapoor tied the knot a year ago. The actors married at their Mumbai home Vastu on April 14, 2022. The intimate wedding was attended by only close friends and family. Alia, who w… [+2622 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"7.0-magnitude earthquake hits Indonesia | World News - Hindustan Times\",\n            \"description\": \"Indonesia's geological agency has ruled out a tsunami after the epicentre was detected to be at a depth of 594 km. | World News\",\n            \"url\": \"https://www.hindustantimes.com/world-news/70magnitude-earthquake-hits-indonesia-tsunami-ruled-out-101681468243097.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/indonesia_java_earthquake_1681468660256_1681468660450_1681468660450.jpg\",\n            \"publishedAt\": \"2023-04-14T10:39:54Z\",\n            \"content\": \"An earthquake of magnitude 7.0 struck the north coast of Java in Indonesia Friday, according to the United States Geological Survey. The earthquake was recorded in the sea 96 km north of Tuban around… [+651 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"The Hindu\",\n            \"title\": \"Give us 35 plus Lok Sabha seats from Bengal in 2024; TMC won't complete term, says Amit shah - The Hindu\",\n            \"description\": null,\n            \"url\": \"https://www.thehindu.com/news/national/give-us-35-plus-lok-sabha-seats-from-bengal-in-2024-tmc-wont-complete-term-says-amit-shah/article66737117.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T10:35:00Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Daijiworld.com\"\n            },\n            \"author\": null,\n            \"title\": \"realme set to empower next-gen users with launch of narzo N55 - Daijiworld.com\",\n            \"description\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing products across different price ranges, catering to every custome…\",\n            \"url\": \"https://www.daijiworld.com/news/newsDisplay?newsID=1070269\",\n            \"urlToImage\": \"http://daijiworld.com/images/daijiSquareLogo.png\",\n            \"publishedAt\": \"2023-04-14T10:27:35Z\",\n            \"content\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing produ… [+3038 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Rediff.com\"\n            },\n            \"author\": \"PTI\",\n            \"title\": \"Only way forward is...: Cong points to Adani's 'China links' - Rediff.com\",\n            \"description\": \"Congress general secretary in-charge communications Jairam Ramesh said that in the 'Hum Adani ke Hain Kaun (HAHK)' series under which the Congress posed questions to Prime Minister Narendra Modi, the party had asked him about his 'favourite business group's l…\",\n            \"url\": \"https://www.rediff.com/news/report/only-way-forward-is-cong-points-to-adanis-china-links/20230414.htm\",\n            \"urlToImage\": \"https://im.rediff.com/money/2023/mar/03gautam-adani.jpg\",\n            \"publishedAt\": \"2023-04-14T10:21:25Z\",\n            \"content\": \"The Congress pointed to Adani Group's alleged China links on Friday and asserted that the only way forward is a Joint Parliamentary Committee probe to investigate all the relevant aspects of the matt… [+3554 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"LIVE updates: Guwahati HC has distinct heritage, identity of its own, says Modi - Hindustan Times\",\n            \"description\": \"Prime Minister Narendra Modi is in Assam Friday to lay the foundation stone and inaugurate projects worth approximately ₹14,300 crore.\",\n            \"url\": \"https://www.hindustantimes.com/india-news/pm-modi-s-assam-visit-live-updates-latest-news-today-101681452397365.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Bihu_1681474625330_1681474630685_1681474630685.jpg\",\n            \"publishedAt\": \"2023-04-14T10:15:29Z\",\n            \"content\": \"Prime Minister Narendra Modi is in Assam Friday, where he will lay the foundation stone and inaugurate projects worth approximately 14,300 crore.\\r\\nHe will visit the newly built AIIMS Guwahati and ded… [+10434 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Which gender is more likely to suffer from Parkinson’s disease? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/web-stories/wellness/which-gender-is-more-likely-to-suffer-from-parkinsons-disease/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:51:45Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Odishatv.in\"\n            },\n            \"author\": \"Nitesh Kumar Sahoo\",\n            \"title\": \"Adheera aka Sanjay Dutt goes nostalgic as KGF Chapter 2 clocks one year - OTV News\",\n            \"description\": \"While Sanju has several times stepped into negative roles and nailed his characters with his stellar performance, playing Adheera was a milestone for the actor as it was the most violent character in his acting career.\",\n            \"url\": \"https://odishatv.in/news/entertainment/adheera-aka-sanjay-dutt-goes-nostalgic-as-kgf-chapter-2-clocks-one-year-201647\",\n            \"urlToImage\": \"https://images.odishatv.in/uploadimage/library/16_9/16_9_5/IMAGE_1646122391.jpg\",\n            \"publishedAt\": \"2023-04-14T09:43:22Z\",\n            \"content\": \"Bollywood superstar Sanjay Dutt seems to be overwhelmed as KGF Chapter 2 clocks one year of its theatrical release on April 14. While KGF lovers are celebrating the glorious day on social media, Sanj… [+2351 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"Frontline\",\n            \"title\": \"Human Genome Sequence @ 20: How mapping the mind changed science forever - Frontline\",\n            \"description\": null,\n            \"url\": \"https://frontline.thehindu.com/news/human-genome-sequence-at-20-how-mapping-the-mind-changed-science-forever/article66736804.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:34:26Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Pooja Hegde On Rumours She Is Dating Salman Khan: \\\"What Do I Say To That?\\\" - NDTV\",\n            \"description\": \"NDTV.com: India, Business, Bollywood, Cricket, Video and Breaking News\",\n            \"url\": \"https://www.ndtv.com/\",\n            \"urlToImage\": \"https://cdn.ndtv.com/common/images/ogndtv.png\",\n            \"publishedAt\": \"2023-04-14T09:32:01Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Business Standard\"\n            },\n            \"author\": null,\n            \"title\": \"28% chance of Covid-like pandemic hitting the world in next decade - Business Standard\",\n            \"description\": \"In a worst-case scenario, a bird flu type virus that mutates to allow human-to-human transmission could kill as many as 15,000 people in the UK in a single day\",\n            \"url\": \"https://www.business-standard.com/world-news/28-chance-of-covid-like-pandemic-hitting-the-world-in-next-decade-123041400510_1.html\",\n            \"urlToImage\": \"https://bsmedia.business-standard.com/_media/bs/img/article/2023-03/08/full/1678254805-151.jpg\",\n            \"publishedAt\": \"2023-04-14T09:30:12Z\",\n            \"content\": \"By Bloomberg NewsTheres a 27.5% chance a pandemic as deadly as Covid-19 could take place in the next decade as viruses emerge more frequently, with rapid vaccine rollout the key to reducing fatalitie… [+50 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Delhi Power Subsidy Ends Today, AAP-Lt Governor Blame Game Begins - NDTV\",\n            \"description\": \"Delhi government has announced that the power subsidy to nearly 46 lakh people in the national capital will cease from Friday as Lieutenant Governor V K Saxena is yet to clear the file to extend the subsidy to consumers.\",\n            \"url\": \"https://www.ndtv.com/india-news/delhi-power-subsidy-to-46-lakh-families-ends-today-no-clearance-from-lt-governor-yet-news-agency-pti-quoting-power-minister-atishi-3947910\",\n            \"urlToImage\": \"https://c.ndtvimg.com/2022-05/41q8vodo_power-generic-reuters_625x300_25_May_22.jpg\",\n            \"publishedAt\": \"2023-04-14T09:24:00Z\",\n            \"content\": \"The AAP has government allocated Rs 3,250 crore for power subsidy in its budget for 2023-24.\\r\\nNew Delhi: AAP-led Delhi government and Lieutenant Governor VK Saxena are at each other's throats again, … [+1849 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"TIMESOFINDIA.COM\",\n            \"title\": \"IPL 2023: Opener Shubman Gill wants to be a finisher for Gujarat Titans - Indiatimes.com\",\n            \"description\": \"Cricket News: Not content with setting up victories for Gujarat Titans, opener Shubman Gill wants to seal them as well by batting till the end, the 23-year-old said\",\n            \"url\": \"https://timesofindia.indiatimes.com/sports/cricket/ipl/top-stories/ipl-2023-opener-shubman-gill-wants-to-be-a-finisher-for-gujarat-titans/articleshow/99488964.cms\",\n            \"urlToImage\": \"https://static.toiimg.com/thumb/msid-99488906,width-1070,height-580,imgsize-59218,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T09:06:00Z\",\n            \"content\": \"Shubman Gill shines as Gujarat Titans beat Punjab Kings by 6 wickets\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Who is Jack Teixeira, the 21-year-old arrested in US classified documents leak probe? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/article/world/jack-teixeira-arrested-us-classified-documents-probe-8555462/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T08:44:20Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Tech\",\n            \"title\": \"NASA Astronomy Picture of the Day 14 April 2023: Fascinating Hamburger Galaxy - HT Tech\",\n            \"description\": \"Today’s NASA Astronomy Picture of the Day is a fascinating snapshot of NGC 3628, also known as the Hamburger Galaxy.\",\n            \"url\": \"https://tech.hindustantimes.com/tech/news/nasa-astronomy-picture-of-the-day-14-april-2023-fascinating-hamburger-galaxy-71681461624824.html\",\n            \"urlToImage\": \"https://images.hindustantimes.com/tech/img/2023/04/14/1600x900/spiral_galaxy_1681461704370_1681461757717_1681461757717.jpg\",\n            \"publishedAt\": \"2023-04-14T08:42:43Z\",\n            \"content\": \"Although most galaxies have elliptical shapes, a few have unusual shapes like toothpicks or rings. One of the most spectacular looking galaxies are the Spiral galaxies, which have winding spiral arms… [+1736 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"Reuters\",\n            \"title\": \"James Murdoch's Bodhi Tree slashes planned investment in Reliance JV Viacom18 by 70% to Rs 4,306 crore - Economic Times\",\n            \"description\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70%, investing Rs 4,306 crore ($527.84 million). Reliance Industries will lead the investment w…\",\n            \"url\": \"https://economictimes.indiatimes.com/industry/media/entertainment/media/james-murdochs-bodhi-tree-slashes-planned-investment-in-reliance-jv-viacom18-by-70-to-rs-4306-crore/articleshow/99488129.cms\",\n            \"urlToImage\": \"https://img.etimg.com/thumb/msid-99488494,width-1070,height-580,imgsize-1660006,overlay-economictimes/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T08:28:00Z\",\n            \"content\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70% and will now pump in Rs 4,306 c… [+1279 chars]\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/test",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NewsAPI",
+			"item": [
+				{
+					"name": "https://newsapi.org/v2/top-headlines?country=in&apiKey=6748e3b212b044ca80dd0a8633271c93",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/top-headlines?country=in&apiKey=6748e3b212b044ca80dd0a8633271c93",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"top-headlines"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "in"
+								},
+								{
+									"key": "apiKey",
+									"value": "6748e3b212b044ca80dd0a8633271c93"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://newsapi.org/v2/top-headlines?country=in&apiKey=6748e3b212b044ca80dd0a8633271c93",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://newsapi.org/v2/top-headlines?country=in&apiKey=6748e3b212b044ca80dd0a8633271c93",
+									"protocol": "https",
+									"host": [
+										"newsapi",
+										"org"
+									],
+									"path": [
+										"v2",
+										"top-headlines"
+									],
+									"query": [
+										{
+											"key": "country",
+											"value": "in"
+										},
+										{
+											"key": "apiKey",
+											"value": "6748e3b212b044ca80dd0a8633271c93"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 15 Apr 2023 13:35:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "-1"
+								},
+								{
+									"key": "X-Cached-Result",
+									"value": "false"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=n%2FMc2tr%2BlMyngfWcYbBE9co2S6soHQqRWpForEkdrJ4WlxyLrq%2FwwFtzHkxRlLawS2q54bJruXJCDNqwpC07LelTEFQ2pizRt%2F4hCEyaiM2XSh1C5xYUaRDQL0kk\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b8493127acd8577-BOM"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"totalResults\": 38,\n    \"articles\": [\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"India Today\"\n            },\n            \"author\": \"Munish Chandra Pandey\",\n            \"title\": \"CBI summons Delhi CM Arvind Kejriwal for questioning in liquor policy case - India Today\",\n            \"description\": \"The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\",\n            \"url\": \"https://www.indiatoday.in/india/story/cbi-summons-delhi-cm-arvind-kejriwal-for-questioning-liquor-policy-case-sources-2360089-2023-04-14\",\n            \"urlToImage\": \"https://akm-img-a-in.tosshub.com/indiatoday/images/story/202304/kejridelhi-sixteen_nine.jpeg?VersionId=rWSVj7hAGfFWPiYkd1QiRjspVNXR5Kh1\",\n            \"publishedAt\": \"2023-04-14T12:00:00Z\",\n            \"content\": \"By Munish Chandra Pandey, Pankaj Jain: The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\\r\\nThe probe agency has sum… [+2499 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"YouTube\"\n            },\n            \"author\": null,\n            \"title\": \"ESA's JUICE Mission Live: ESA launches mission to explore Jupiter's ocean-bearing moons | WION Live - WION\",\n            \"description\": \"Europe's space agency launches Jupiter Icy moon Mission (Juice) from Europe’s Spaceport at Kourou in French Guiana. Invited media will watch the launch from ...\",\n            \"url\": \"https://www.youtube.com/watch?v=cbMrql5-ypI\",\n            \"urlToImage\": \"https://i.ytimg.com/vi/cbMrql5-ypI/maxresdefault_live.jpg\",\n            \"publishedAt\": \"2023-04-14T11:40:34Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"Kanishka Singharia\",\n            \"title\": \"Truck at Rahul Gandhi's house as disqualified MP set to vacate official bungalow - Hindustan Times\",\n            \"description\": \"The 12 Tughlak Lane bungalow was allotted to Gandhi in 2005 after he won his first Lok Sabha election from Amethi in Uttar Pradesh. | Latest News India\",\n            \"url\": \"https://www.hindustantimes.com/india-news/truck-at-rahul-gandhi-s-house-as-disqualified-mp-set-to-vacate-official-bungalow-101681469101238.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Screenshot_2023-04-14_165323_1681471508454_1681471513417_1681471513417.png\",\n            \"publishedAt\": \"2023-04-14T11:27:35Z\",\n            \"content\": \"Trucks arrived at the government-allotted bungalow of former Congress chief Rahul Gandhi in the national capital as the Lok Sabha secretariat had asked him to vacate his official residence by April 2… [+1840 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"espn-cric-info\",\n                \"name\": \"ESPN Cric Info\"\n            },\n            \"author\": \"Deivarayan Muthu\",\n            \"title\": \"Match Preview - RCB vs Capitals, Indian Premier League 2023, 20th Match - ESPNcricinfo\",\n            \"description\": \"The visitors in Bengaluru will be looking for their first win in IPL 2023\",\n            \"url\": \"https://www.espncricinfo.com/series/indian-premier-league-2023-1345038/royal-challengers-bangalore-vs-delhi-capitals-20th-match-1359494/match-preview\",\n            \"urlToImage\": \"https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/357900/357993.6.jpg\",\n            \"publishedAt\": \"2023-04-14T11:09:11Z\",\n            \"content\": \"Wanindu Hasaranga has linked up with the team, and is getting ready for action  •  Royal Challengers Bangalore\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Entertainment Desk\",\n            \"title\": \"Reddit digs out video of Alia Bhatt 'lying' about destination weddings and Neetu exposing her plans to marry in Africa - Hindustan Times\",\n            \"description\": \"Alia Bhatt said in an old interview that she doesn't like destination weddings. Earlier, Neetu Kapoor had revealed Alia and Ranbir wanted to marry in Africa. | Bollywood\",\n            \"url\": \"https://www.hindustantimes.com/entertainment/bollywood/reddit-digs-out-video-of-alia-bhatt-lying-about-destination-weddings-and-neetu-exposing-her-plans-to-marry-in-africa-101681466907283.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/destination_wedding_Alia_ranbir_1681467484796_1681467500876_1681467500876.jpg\",\n            \"publishedAt\": \"2023-04-14T11:01:45Z\",\n            \"content\": \"Alia Bhatt and Ranbir Kapoor tied the knot a year ago. The actors married at their Mumbai home Vastu on April 14, 2022. The intimate wedding was attended by only close friends and family. Alia, who w… [+2622 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"7.0-magnitude earthquake hits Indonesia | World News - Hindustan Times\",\n            \"description\": \"Indonesia's geological agency has ruled out a tsunami after the epicentre was detected to be at a depth of 594 km. | World News\",\n            \"url\": \"https://www.hindustantimes.com/world-news/70magnitude-earthquake-hits-indonesia-tsunami-ruled-out-101681468243097.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/indonesia_java_earthquake_1681468660256_1681468660450_1681468660450.jpg\",\n            \"publishedAt\": \"2023-04-14T10:39:54Z\",\n            \"content\": \"An earthquake of magnitude 7.0 struck the north coast of Java in Indonesia Friday, according to the United States Geological Survey. The earthquake was recorded in the sea 96 km north of Tuban around… [+651 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"The Hindu\",\n            \"title\": \"Give us 35 plus Lok Sabha seats from Bengal in 2024; TMC won't complete term, says Amit shah - The Hindu\",\n            \"description\": null,\n            \"url\": \"https://www.thehindu.com/news/national/give-us-35-plus-lok-sabha-seats-from-bengal-in-2024-tmc-wont-complete-term-says-amit-shah/article66737117.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T10:35:00Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Daijiworld.com\"\n            },\n            \"author\": null,\n            \"title\": \"realme set to empower next-gen users with launch of narzo N55 - Daijiworld.com\",\n            \"description\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing products across different price ranges, catering to every custome…\",\n            \"url\": \"https://www.daijiworld.com/news/newsDisplay?newsID=1070269\",\n            \"urlToImage\": \"http://daijiworld.com/images/daijiSquareLogo.png\",\n            \"publishedAt\": \"2023-04-14T10:27:35Z\",\n            \"content\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing produ… [+3038 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Rediff.com\"\n            },\n            \"author\": \"PTI\",\n            \"title\": \"Only way forward is...: Cong points to Adani's 'China links' - Rediff.com\",\n            \"description\": \"Congress general secretary in-charge communications Jairam Ramesh said that in the 'Hum Adani ke Hain Kaun (HAHK)' series under which the Congress posed questions to Prime Minister Narendra Modi, the party had asked him about his 'favourite business group's l…\",\n            \"url\": \"https://www.rediff.com/news/report/only-way-forward-is-cong-points-to-adanis-china-links/20230414.htm\",\n            \"urlToImage\": \"https://im.rediff.com/money/2023/mar/03gautam-adani.jpg\",\n            \"publishedAt\": \"2023-04-14T10:21:25Z\",\n            \"content\": \"The Congress pointed to Adani Group's alleged China links on Friday and asserted that the only way forward is a Joint Parliamentary Committee probe to investigate all the relevant aspects of the matt… [+3554 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"LIVE updates: Guwahati HC has distinct heritage, identity of its own, says Modi - Hindustan Times\",\n            \"description\": \"Prime Minister Narendra Modi is in Assam Friday to lay the foundation stone and inaugurate projects worth approximately ₹14,300 crore.\",\n            \"url\": \"https://www.hindustantimes.com/india-news/pm-modi-s-assam-visit-live-updates-latest-news-today-101681452397365.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Bihu_1681474625330_1681474630685_1681474630685.jpg\",\n            \"publishedAt\": \"2023-04-14T10:15:29Z\",\n            \"content\": \"Prime Minister Narendra Modi is in Assam Friday, where he will lay the foundation stone and inaugurate projects worth approximately 14,300 crore.\\r\\nHe will visit the newly built AIIMS Guwahati and ded… [+10434 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Which gender is more likely to suffer from Parkinson’s disease? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/web-stories/wellness/which-gender-is-more-likely-to-suffer-from-parkinsons-disease/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:51:45Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Odishatv.in\"\n            },\n            \"author\": \"Nitesh Kumar Sahoo\",\n            \"title\": \"Adheera aka Sanjay Dutt goes nostalgic as KGF Chapter 2 clocks one year - OTV News\",\n            \"description\": \"While Sanju has several times stepped into negative roles and nailed his characters with his stellar performance, playing Adheera was a milestone for the actor as it was the most violent character in his acting career.\",\n            \"url\": \"https://odishatv.in/news/entertainment/adheera-aka-sanjay-dutt-goes-nostalgic-as-kgf-chapter-2-clocks-one-year-201647\",\n            \"urlToImage\": \"https://images.odishatv.in/uploadimage/library/16_9/16_9_5/IMAGE_1646122391.jpg\",\n            \"publishedAt\": \"2023-04-14T09:43:22Z\",\n            \"content\": \"Bollywood superstar Sanjay Dutt seems to be overwhelmed as KGF Chapter 2 clocks one year of its theatrical release on April 14. While KGF lovers are celebrating the glorious day on social media, Sanj… [+2351 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"Frontline\",\n            \"title\": \"Human Genome Sequence @ 20: How mapping the mind changed science forever - Frontline\",\n            \"description\": null,\n            \"url\": \"https://frontline.thehindu.com/news/human-genome-sequence-at-20-how-mapping-the-mind-changed-science-forever/article66736804.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:34:26Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Pooja Hegde On Rumours She Is Dating Salman Khan: \\\"What Do I Say To That?\\\" - NDTV\",\n            \"description\": \"NDTV.com: India, Business, Bollywood, Cricket, Video and Breaking News\",\n            \"url\": \"https://www.ndtv.com/\",\n            \"urlToImage\": \"https://cdn.ndtv.com/common/images/ogndtv.png\",\n            \"publishedAt\": \"2023-04-14T09:32:01Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Business Standard\"\n            },\n            \"author\": null,\n            \"title\": \"28% chance of Covid-like pandemic hitting the world in next decade - Business Standard\",\n            \"description\": \"In a worst-case scenario, a bird flu type virus that mutates to allow human-to-human transmission could kill as many as 15,000 people in the UK in a single day\",\n            \"url\": \"https://www.business-standard.com/world-news/28-chance-of-covid-like-pandemic-hitting-the-world-in-next-decade-123041400510_1.html\",\n            \"urlToImage\": \"https://bsmedia.business-standard.com/_media/bs/img/article/2023-03/08/full/1678254805-151.jpg\",\n            \"publishedAt\": \"2023-04-14T09:30:12Z\",\n            \"content\": \"By Bloomberg NewsTheres a 27.5% chance a pandemic as deadly as Covid-19 could take place in the next decade as viruses emerge more frequently, with rapid vaccine rollout the key to reducing fatalitie… [+50 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Delhi Power Subsidy Ends Today, AAP-Lt Governor Blame Game Begins - NDTV\",\n            \"description\": \"Delhi government has announced that the power subsidy to nearly 46 lakh people in the national capital will cease from Friday as Lieutenant Governor V K Saxena is yet to clear the file to extend the subsidy to consumers.\",\n            \"url\": \"https://www.ndtv.com/india-news/delhi-power-subsidy-to-46-lakh-families-ends-today-no-clearance-from-lt-governor-yet-news-agency-pti-quoting-power-minister-atishi-3947910\",\n            \"urlToImage\": \"https://c.ndtvimg.com/2022-05/41q8vodo_power-generic-reuters_625x300_25_May_22.jpg\",\n            \"publishedAt\": \"2023-04-14T09:24:00Z\",\n            \"content\": \"The AAP has government allocated Rs 3,250 crore for power subsidy in its budget for 2023-24.\\r\\nNew Delhi: AAP-led Delhi government and Lieutenant Governor VK Saxena are at each other's throats again, … [+1849 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"TIMESOFINDIA.COM\",\n            \"title\": \"IPL 2023: Opener Shubman Gill wants to be a finisher for Gujarat Titans - Indiatimes.com\",\n            \"description\": \"Cricket News: Not content with setting up victories for Gujarat Titans, opener Shubman Gill wants to seal them as well by batting till the end, the 23-year-old said\",\n            \"url\": \"https://timesofindia.indiatimes.com/sports/cricket/ipl/top-stories/ipl-2023-opener-shubman-gill-wants-to-be-a-finisher-for-gujarat-titans/articleshow/99488964.cms\",\n            \"urlToImage\": \"https://static.toiimg.com/thumb/msid-99488906,width-1070,height-580,imgsize-59218,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T09:06:00Z\",\n            \"content\": \"Shubman Gill shines as Gujarat Titans beat Punjab Kings by 6 wickets\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Who is Jack Teixeira, the 21-year-old arrested in US classified documents leak probe? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/article/world/jack-teixeira-arrested-us-classified-documents-probe-8555462/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T08:44:20Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Tech\",\n            \"title\": \"NASA Astronomy Picture of the Day 14 April 2023: Fascinating Hamburger Galaxy - HT Tech\",\n            \"description\": \"Today’s NASA Astronomy Picture of the Day is a fascinating snapshot of NGC 3628, also known as the Hamburger Galaxy.\",\n            \"url\": \"https://tech.hindustantimes.com/tech/news/nasa-astronomy-picture-of-the-day-14-april-2023-fascinating-hamburger-galaxy-71681461624824.html\",\n            \"urlToImage\": \"https://images.hindustantimes.com/tech/img/2023/04/14/1600x900/spiral_galaxy_1681461704370_1681461757717_1681461757717.jpg\",\n            \"publishedAt\": \"2023-04-14T08:42:43Z\",\n            \"content\": \"Although most galaxies have elliptical shapes, a few have unusual shapes like toothpicks or rings. One of the most spectacular looking galaxies are the Spiral galaxies, which have winding spiral arms… [+1736 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"Reuters\",\n            \"title\": \"James Murdoch's Bodhi Tree slashes planned investment in Reliance JV Viacom18 by 70% to Rs 4,306 crore - Economic Times\",\n            \"description\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70%, investing Rs 4,306 crore ($527.84 million). Reliance Industries will lead the investment w…\",\n            \"url\": \"https://economictimes.indiatimes.com/industry/media/entertainment/media/james-murdochs-bodhi-tree-slashes-planned-investment-in-reliance-jv-viacom18-by-70-to-rs-4306-crore/articleshow/99488129.cms\",\n            \"urlToImage\": \"https://img.etimg.com/thumb/msid-99488494,width-1070,height-580,imgsize-1660006,overlay-economictimes/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T08:28:00Z\",\n            \"content\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70% and will now pump in Rs 4,306 c… [+1279 chars]\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/api/users/{uuid}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/users/36b417b2-7741-45b6-a56e-df577f13f33e",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"36b417b2-7741-45b6-a56e-df577f13f33e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/users/{uuid}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manish Parui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/users/36b417b2-7741-45b6-a56e-df577f13f33e",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"36b417b2-7741-45b6-a56e-df577f13f33e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "/api/articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/articles?sources[]=The Hindu&sources[]=India Today",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"articles"
+							],
+							"query": [
+								{
+									"key": "sources[]",
+									"value": "The Hindu"
+								},
+								{
+									"key": "sources[]",
+									"value": "India Today"
+								},
+								{
+									"key": "author",
+									"value": "PTI",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "some",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/articles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": [\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"India Today\"\n            },\n            \"author\": \"Munish Chandra Pandey\",\n            \"title\": \"CBI summons Delhi CM Arvind Kejriwal for questioning in liquor policy case - India Today\",\n            \"description\": \"The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\",\n            \"url\": \"https://www.indiatoday.in/india/story/cbi-summons-delhi-cm-arvind-kejriwal-for-questioning-liquor-policy-case-sources-2360089-2023-04-14\",\n            \"urlToImage\": \"https://akm-img-a-in.tosshub.com/indiatoday/images/story/202304/kejridelhi-sixteen_nine.jpeg?VersionId=rWSVj7hAGfFWPiYkd1QiRjspVNXR5Kh1\",\n            \"publishedAt\": \"2023-04-14T12:00:00Z\",\n            \"content\": \"By Munish Chandra Pandey, Pankaj Jain: The Central Bureau of Investigation (CBI) has summoned Delhi Chief Minister Arvind Kejriwal for questioning in the liquor police case.\\r\\nThe probe agency has sum… [+2499 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"YouTube\"\n            },\n            \"author\": null,\n            \"title\": \"ESA's JUICE Mission Live: ESA launches mission to explore Jupiter's ocean-bearing moons | WION Live - WION\",\n            \"description\": \"Europe's space agency launches Jupiter Icy moon Mission (Juice) from Europe’s Spaceport at Kourou in French Guiana. Invited media will watch the launch from ...\",\n            \"url\": \"https://www.youtube.com/watch?v=cbMrql5-ypI\",\n            \"urlToImage\": \"https://i.ytimg.com/vi/cbMrql5-ypI/maxresdefault_live.jpg\",\n            \"publishedAt\": \"2023-04-14T11:40:34Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"Kanishka Singharia\",\n            \"title\": \"Truck at Rahul Gandhi's house as disqualified MP set to vacate official bungalow - Hindustan Times\",\n            \"description\": \"The 12 Tughlak Lane bungalow was allotted to Gandhi in 2005 after he won his first Lok Sabha election from Amethi in Uttar Pradesh. | Latest News India\",\n            \"url\": \"https://www.hindustantimes.com/india-news/truck-at-rahul-gandhi-s-house-as-disqualified-mp-set-to-vacate-official-bungalow-101681469101238.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Screenshot_2023-04-14_165323_1681471508454_1681471513417_1681471513417.png\",\n            \"publishedAt\": \"2023-04-14T11:27:35Z\",\n            \"content\": \"Trucks arrived at the government-allotted bungalow of former Congress chief Rahul Gandhi in the national capital as the Lok Sabha secretariat had asked him to vacate his official residence by April 2… [+1840 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"espn-cric-info\",\n                \"name\": \"ESPN Cric Info\"\n            },\n            \"author\": \"Deivarayan Muthu\",\n            \"title\": \"Match Preview - RCB vs Capitals, Indian Premier League 2023, 20th Match - ESPNcricinfo\",\n            \"description\": \"The visitors in Bengaluru will be looking for their first win in IPL 2023\",\n            \"url\": \"https://www.espncricinfo.com/series/indian-premier-league-2023-1345038/royal-challengers-bangalore-vs-delhi-capitals-20th-match-1359494/match-preview\",\n            \"urlToImage\": \"https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/357900/357993.6.jpg\",\n            \"publishedAt\": \"2023-04-14T11:09:11Z\",\n            \"content\": \"Wanindu Hasaranga has linked up with the team, and is getting ready for action  •  Royal Challengers Bangalore\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Entertainment Desk\",\n            \"title\": \"Reddit digs out video of Alia Bhatt 'lying' about destination weddings and Neetu exposing her plans to marry in Africa - Hindustan Times\",\n            \"description\": \"Alia Bhatt said in an old interview that she doesn't like destination weddings. Earlier, Neetu Kapoor had revealed Alia and Ranbir wanted to marry in Africa. | Bollywood\",\n            \"url\": \"https://www.hindustantimes.com/entertainment/bollywood/reddit-digs-out-video-of-alia-bhatt-lying-about-destination-weddings-and-neetu-exposing-her-plans-to-marry-in-africa-101681466907283.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/destination_wedding_Alia_ranbir_1681467484796_1681467500876_1681467500876.jpg\",\n            \"publishedAt\": \"2023-04-14T11:01:45Z\",\n            \"content\": \"Alia Bhatt and Ranbir Kapoor tied the knot a year ago. The actors married at their Mumbai home Vastu on April 14, 2022. The intimate wedding was attended by only close friends and family. Alia, who w… [+2622 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"7.0-magnitude earthquake hits Indonesia | World News - Hindustan Times\",\n            \"description\": \"Indonesia's geological agency has ruled out a tsunami after the epicentre was detected to be at a depth of 594 km. | World News\",\n            \"url\": \"https://www.hindustantimes.com/world-news/70magnitude-earthquake-hits-indonesia-tsunami-ruled-out-101681468243097.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/indonesia_java_earthquake_1681468660256_1681468660450_1681468660450.jpg\",\n            \"publishedAt\": \"2023-04-14T10:39:54Z\",\n            \"content\": \"An earthquake of magnitude 7.0 struck the north coast of Java in Indonesia Friday, according to the United States Geological Survey. The earthquake was recorded in the sea 96 km north of Tuban around… [+651 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"The Hindu\",\n            \"title\": \"Give us 35 plus Lok Sabha seats from Bengal in 2024; TMC won't complete term, says Amit shah - The Hindu\",\n            \"description\": null,\n            \"url\": \"https://www.thehindu.com/news/national/give-us-35-plus-lok-sabha-seats-from-bengal-in-2024-tmc-wont-complete-term-says-amit-shah/article66737117.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T10:35:00Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Daijiworld.com\"\n            },\n            \"author\": null,\n            \"title\": \"realme set to empower next-gen users with launch of narzo N55 - Daijiworld.com\",\n            \"description\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing products across different price ranges, catering to every custome…\",\n            \"url\": \"https://www.daijiworld.com/news/newsDisplay?newsID=1070269\",\n            \"urlToImage\": \"http://daijiworld.com/images/daijiSquareLogo.png\",\n            \"publishedAt\": \"2023-04-14T10:27:35Z\",\n            \"content\": \"New Delhi, Apr 14 (IANS): realme is disrupting the smartphone market by empowering next-gen users with its consumer-focused developments of technology and design. The brand has been introducing produ… [+3038 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Rediff.com\"\n            },\n            \"author\": \"PTI\",\n            \"title\": \"Only way forward is...: Cong points to Adani's 'China links' - Rediff.com\",\n            \"description\": \"Congress general secretary in-charge communications Jairam Ramesh said that in the 'Hum Adani ke Hain Kaun (HAHK)' series under which the Congress posed questions to Prime Minister Narendra Modi, the party had asked him about his 'favourite business group's l…\",\n            \"url\": \"https://www.rediff.com/news/report/only-way-forward-is-cong-points-to-adanis-china-links/20230414.htm\",\n            \"urlToImage\": \"https://im.rediff.com/money/2023/mar/03gautam-adani.jpg\",\n            \"publishedAt\": \"2023-04-14T10:21:25Z\",\n            \"content\": \"The Congress pointed to Adani Group's alleged China links on Friday and asserted that the only way forward is a Joint Parliamentary Committee probe to investigate all the relevant aspects of the matt… [+3554 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT News Desk\",\n            \"title\": \"LIVE updates: Guwahati HC has distinct heritage, identity of its own, says Modi - Hindustan Times\",\n            \"description\": \"Prime Minister Narendra Modi is in Assam Friday to lay the foundation stone and inaugurate projects worth approximately ₹14,300 crore.\",\n            \"url\": \"https://www.hindustantimes.com/india-news/pm-modi-s-assam-visit-live-updates-latest-news-today-101681452397365.html\",\n            \"urlToImage\": \"https://www.hindustantimes.com/ht-img/img/2023/04/14/1600x900/Bihu_1681474625330_1681474630685_1681474630685.jpg\",\n            \"publishedAt\": \"2023-04-14T10:15:29Z\",\n            \"content\": \"Prime Minister Narendra Modi is in Assam Friday, where he will lay the foundation stone and inaugurate projects worth approximately 14,300 crore.\\r\\nHe will visit the newly built AIIMS Guwahati and ded… [+10434 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Which gender is more likely to suffer from Parkinson’s disease? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/web-stories/wellness/which-gender-is-more-likely-to-suffer-from-parkinsons-disease/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:51:45Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Odishatv.in\"\n            },\n            \"author\": \"Nitesh Kumar Sahoo\",\n            \"title\": \"Adheera aka Sanjay Dutt goes nostalgic as KGF Chapter 2 clocks one year - OTV News\",\n            \"description\": \"While Sanju has several times stepped into negative roles and nailed his characters with his stellar performance, playing Adheera was a milestone for the actor as it was the most violent character in his acting career.\",\n            \"url\": \"https://odishatv.in/news/entertainment/adheera-aka-sanjay-dutt-goes-nostalgic-as-kgf-chapter-2-clocks-one-year-201647\",\n            \"urlToImage\": \"https://images.odishatv.in/uploadimage/library/16_9/16_9_5/IMAGE_1646122391.jpg\",\n            \"publishedAt\": \"2023-04-14T09:43:22Z\",\n            \"content\": \"Bollywood superstar Sanjay Dutt seems to be overwhelmed as KGF Chapter 2 clocks one year of its theatrical release on April 14. While KGF lovers are celebrating the glorious day on social media, Sanj… [+2351 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-hindu\",\n                \"name\": \"The Hindu\"\n            },\n            \"author\": \"Frontline\",\n            \"title\": \"Human Genome Sequence @ 20: How mapping the mind changed science forever - Frontline\",\n            \"description\": null,\n            \"url\": \"https://frontline.thehindu.com/news/human-genome-sequence-at-20-how-mapping-the-mind-changed-science-forever/article66736804.ece\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T09:34:26Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Pooja Hegde On Rumours She Is Dating Salman Khan: \\\"What Do I Say To That?\\\" - NDTV\",\n            \"description\": \"NDTV.com: India, Business, Bollywood, Cricket, Video and Breaking News\",\n            \"url\": \"https://www.ndtv.com/\",\n            \"urlToImage\": \"https://cdn.ndtv.com/common/images/ogndtv.png\",\n            \"publishedAt\": \"2023-04-14T09:32:01Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Business Standard\"\n            },\n            \"author\": null,\n            \"title\": \"28% chance of Covid-like pandemic hitting the world in next decade - Business Standard\",\n            \"description\": \"In a worst-case scenario, a bird flu type virus that mutates to allow human-to-human transmission could kill as many as 15,000 people in the UK in a single day\",\n            \"url\": \"https://www.business-standard.com/world-news/28-chance-of-covid-like-pandemic-hitting-the-world-in-next-decade-123041400510_1.html\",\n            \"urlToImage\": \"https://bsmedia.business-standard.com/_media/bs/img/article/2023-03/08/full/1678254805-151.jpg\",\n            \"publishedAt\": \"2023-04-14T09:30:12Z\",\n            \"content\": \"By Bloomberg NewsTheres a 27.5% chance a pandemic as deadly as Covid-19 could take place in the next decade as viruses emerge more frequently, with rapid vaccine rollout the key to reducing fatalitie… [+50 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"NDTV News\"\n            },\n            \"author\": null,\n            \"title\": \"Delhi Power Subsidy Ends Today, AAP-Lt Governor Blame Game Begins - NDTV\",\n            \"description\": \"Delhi government has announced that the power subsidy to nearly 46 lakh people in the national capital will cease from Friday as Lieutenant Governor V K Saxena is yet to clear the file to extend the subsidy to consumers.\",\n            \"url\": \"https://www.ndtv.com/india-news/delhi-power-subsidy-to-46-lakh-families-ends-today-no-clearance-from-lt-governor-yet-news-agency-pti-quoting-power-minister-atishi-3947910\",\n            \"urlToImage\": \"https://c.ndtvimg.com/2022-05/41q8vodo_power-generic-reuters_625x300_25_May_22.jpg\",\n            \"publishedAt\": \"2023-04-14T09:24:00Z\",\n            \"content\": \"The AAP has government allocated Rs 3,250 crore for power subsidy in its budget for 2023-24.\\r\\nNew Delhi: AAP-led Delhi government and Lieutenant Governor VK Saxena are at each other's throats again, … [+1849 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"TIMESOFINDIA.COM\",\n            \"title\": \"IPL 2023: Opener Shubman Gill wants to be a finisher for Gujarat Titans - Indiatimes.com\",\n            \"description\": \"Cricket News: Not content with setting up victories for Gujarat Titans, opener Shubman Gill wants to seal them as well by batting till the end, the 23-year-old said\",\n            \"url\": \"https://timesofindia.indiatimes.com/sports/cricket/ipl/top-stories/ipl-2023-opener-shubman-gill-wants-to-be-a-finisher-for-gujarat-titans/articleshow/99488964.cms\",\n            \"urlToImage\": \"https://static.toiimg.com/thumb/msid-99488906,width-1070,height-580,imgsize-59218,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T09:06:00Z\",\n            \"content\": \"Shubman Gill shines as Gujarat Titans beat Punjab Kings by 6 wickets\"\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"The Indian Express\"\n            },\n            \"author\": \"The Indian Express\",\n            \"title\": \"Who is Jack Teixeira, the 21-year-old arrested in US classified documents leak probe? - The Indian Express\",\n            \"description\": null,\n            \"url\": \"https://indianexpress.com/article/world/jack-teixeira-arrested-us-classified-documents-probe-8555462/\",\n            \"urlToImage\": null,\n            \"publishedAt\": \"2023-04-14T08:44:20Z\",\n            \"content\": null\n        },\n        {\n            \"source\": {\n                \"id\": null,\n                \"name\": \"Hindustan Times\"\n            },\n            \"author\": \"HT Tech\",\n            \"title\": \"NASA Astronomy Picture of the Day 14 April 2023: Fascinating Hamburger Galaxy - HT Tech\",\n            \"description\": \"Today’s NASA Astronomy Picture of the Day is a fascinating snapshot of NGC 3628, also known as the Hamburger Galaxy.\",\n            \"url\": \"https://tech.hindustantimes.com/tech/news/nasa-astronomy-picture-of-the-day-14-april-2023-fascinating-hamburger-galaxy-71681461624824.html\",\n            \"urlToImage\": \"https://images.hindustantimes.com/tech/img/2023/04/14/1600x900/spiral_galaxy_1681461704370_1681461757717_1681461757717.jpg\",\n            \"publishedAt\": \"2023-04-14T08:42:43Z\",\n            \"content\": \"Although most galaxies have elliptical shapes, a few have unusual shapes like toothpicks or rings. One of the most spectacular looking galaxies are the Spiral galaxies, which have winding spiral arms… [+1736 chars]\"\n        },\n        {\n            \"source\": {\n                \"id\": \"the-times-of-india\",\n                \"name\": \"The Times of India\"\n            },\n            \"author\": \"Reuters\",\n            \"title\": \"James Murdoch's Bodhi Tree slashes planned investment in Reliance JV Viacom18 by 70% to Rs 4,306 crore - Economic Times\",\n            \"description\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70%, investing Rs 4,306 crore ($527.84 million). Reliance Industries will lead the investment w…\",\n            \"url\": \"https://economictimes.indiatimes.com/industry/media/entertainment/media/james-murdochs-bodhi-tree-slashes-planned-investment-in-reliance-jv-viacom18-by-70-to-rs-4306-crore/articleshow/99488129.cms\",\n            \"urlToImage\": \"https://img.etimg.com/thumb/msid-99488494,width-1070,height-580,imgsize-1660006,overlay-economictimes/photo.jpg\",\n            \"publishedAt\": \"2023-04-14T08:28:00Z\",\n            \"content\": \"Bodhi Tree, a joint venture between James Murdoch and a former Star India executive, has reduced its planned investment in Reliance's broadcast venture Viacom18 by 70% and will now pump in Rs 4,306 c… [+1279 chars]\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/articles",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/storeArticlesFromSources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/storeArticlesFromSources",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"storeArticlesFromSources"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "/api/search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/search?keyword=hindu",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "hindu"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Preference",
+			"item": [
+				{
+					"name": "/api/preference",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/api/preferences",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{innoscriptaAuthToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiBaseUrl",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "apiBaseUrl",
+			"value": "https://webservices.finass.dencrypt.net",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
