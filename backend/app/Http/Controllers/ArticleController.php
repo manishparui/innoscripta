@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ArticleResource;
 use App\Models\Article;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class ArticleController extends Controller {
+class ArticleController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $articles = Article::query();
 
@@ -59,7 +60,8 @@ class ArticleController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($data) {
+    public function store($data)
+    {
 
         $validator = Validator::make($data, [
             'data' => 'required|array',
@@ -83,7 +85,7 @@ class ArticleController extends Controller {
         }
 
         $articles = [];
-        foreach($data['data'] as $object) {
+        foreach ($data['data'] as $object) {
             $articles[] = [
                 'uuid' => Str::uuid(),
                 'source' => array_key_exists('source', $object) ? $object['source'] : null,

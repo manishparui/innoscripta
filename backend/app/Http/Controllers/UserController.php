@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
-use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $filters = array(
             'organization_uuid' => 'organizationUuid',
             'status' => 'status',
@@ -81,7 +80,8 @@ class UserController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) { }
+    public function store(Request $request)
+    { }
 
     /**
      * Display the specified resource.
@@ -89,7 +89,8 @@ class UserController extends Controller {
      * @param  string  $uuid
      * @return \Illuminate\Http\Response
      */
-    public function show($uuid) {
+    public function show($uuid)
+    {
         $user = User::where('uuid', '=', $uuid)->firstOrFail();
 
         return response()->json([
@@ -112,7 +113,8 @@ class UserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $uuid) {
+    public function update(Request $request, $uuid)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'email|unique:users,email',
             'emailVerifiedAt' => 'date_format:Y-m-d H:i:s',
@@ -190,6 +192,7 @@ class UserController extends Controller {
      * @param  string  $reference
      * @return \Illuminate\Http\Response
      */
-    public function destroy($reference) { }
+    public function destroy($reference)
+    { }
 
 }

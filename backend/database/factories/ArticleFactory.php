@@ -6,7 +6,8 @@ use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class ArticleFactory extends Factory {
+class ArticleFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -19,7 +20,8 @@ class ArticleFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             'uuid' => Str::uuid(),
             'source' => $this->faker->company,
